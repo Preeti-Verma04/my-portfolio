@@ -1,0 +1,326 @@
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0b0e1a;
+  --card: #141833;
+  --accent: #4da3ff;
+  --text: #ffffff;
+  --muted: #b8b8b8;
+  --line: rgba(255,255,255,0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  padding: 40px 120px;
+  line-height: 1.7;
+}
+
+/* ===== Shared Section Spacing ===== */
+div, section {
+  padding: 40px 0; 
+  border-bottom: 1px solid var(--line);
+}
+
+div:last-of-type, section:last-of-type {
+  border-bottom: none;
+}
+
+/* ===== Header & Nav ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--line);
+}
+
+header p { font-size: 28px; font-weight: 700; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+/* ===== Intro Section ===== */
+#intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  border-bottom: 1px solid var(--line);
+}
+
+.intro-text { max-width: 680px; }
+.greet { font-size: 20px; color: var(--accent); margin-bottom: 10px; }
+h1 { font-size: 48px; margin-bottom: 8px; }
+h1 span { color: var(--accent); }
+h2 { font-size: 26px; color: var(--muted); margin-bottom: 18px; }
+.tagline { font-size: 17px; color: var(--muted); margin-bottom: 25px; }
+
+.intro-buttons { display: flex; gap: 20px; }
+.btn {
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+}
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.secondary { border: 1px solid var(--accent); color: var(--accent); }
+.btn.secondary:hover { background: var(--accent); color: #fff; }
+
+.profile {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit: cover;
+}
+
+/* ===== Scrolling Skills (Marquee) ===== */
+.skill { text-align: center; }
+.skill-slider {
+  overflow: hidden;
+  padding: 20px 0;
+  width: 100%;
+  position: relative;
+}
+
+.skill-track {
+  display: flex;
+  width: calc(150px * 14); 
+  animation: scroll 20s linear infinite;
+}
+
+.skill-icon {
+  height: 90px;
+  width: 90px;
+  margin: 0 30px;
+  padding: 12px;
+  background: var(--card);
+  border-radius: 15px;
+  border: 1px solid var(--line);
+  object-fit: contain;
+  transition: 0.3s;
+}
+
+.skill-icon:hover { transform: scale(1.1); border-color: var(--accent); }
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-150px * 7)); }
+}
+
+.skill-slider:hover .skill-track { animation-play-state: paused; }
+
+/* ===== Projects ===== */
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligns content to the top */
+    gap: 40px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+}
+.project-content {
+    flex: 2; /* Takes up more space for readability */
+}
+
+.project-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stacks images top to bottom */
+    gap: 15px; /* Space between the two images */
+    align-items: flex-end;
+}
+.cCert {
+    width: 100%;
+    max-width: 320px; /* Adjust this to match your desired size */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+}
+.project-tech { font-size: 14px; color: var(--accent); margin-bottom: 12px; }
+.project-desc { color: var(--muted); font-size: 15px; max-width: 850px; }
+.project-points { margin: 15px 0 15px 20px; color: var(--muted); font-size: 14px; }
+.project-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column;
+    }
+    .project-images {
+        align-items: center;
+        width: 100%;
+    }
+}
+
+/* ===== Modern Table ===== */
+#table { display: flex; justify-content: center; margin-top: 20px; }
+table {
+  width: 90%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+th, td { padding: 18px; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: rgba(77, 163, 255, 0.1); color: var(--accent); text-transform: uppercase; font-size: 13px; }
+tr:hover { background: rgba(255, 255, 255, 0.03); }
+td:last-child { color: var(--accent); font-weight: bold; }
+
+/* ===== Certifications & Activities ===== */
+.cert-card { display: flex; justify-content: space-between; gap: 40px; padding: 30px 0; }
+.cCert { height: 220px; width: 320px; border-radius: 10px; object-fit: cover; }
+.cert-skills span {
+  padding: 5px 12px; background: var(--card); border: 1px solid var(--line);
+  border-radius: 15px; font-size: 12px; margin-right: 8px;
+}
+
+.activity-slider{
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+}
+
+.activity-track{
+  display: flex;
+  gap: 20px;
+  width: calc(300px * 10);
+  animation: activityScroll 25s linear infinite;
+}
+
+.activity-card {
+  min-width: 280px;
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 1px solid var(--line);
+}
+
+.activity-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.activity-card p {
+  padding: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.activity-card:hover img {
+  transform: scale(1.08);
+}
+
+@keyframes activityScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-300px * 5)); }
+}
+
+.activity-slider:hover .activity-track {
+  animation-play-state: paused;
+}
+
+
+/* ===== Contact Form ===== */
+.contact-form { max-width: 600px; margin: 30px auto; }
+.form-group { display: flex; gap: 15px; margin-bottom: 15px; }
+input, textarea {
+  width: 100%; padding: 14px; background: var(--card);
+  border: 1px solid var(--line); color: #fff; border-radius: 8px; outline: none;
+}
+input:focus, textarea:focus { border-color: var(--accent); }
+button {
+  padding: 14px 40px; background: var(--accent); color: #fff;
+  border: none; border-radius: 30px; cursor: pointer; transition: 0.3s;
+}
+button:hover { opacity: 0.8; transform: scale(1.05); }
+
+.contact-links { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
+.contact-links a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+/* ===== Achievements Section Styles ===== */
+.achievements ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.achievements li {
+  position: relative;
+  padding: 15px 0 15px 35px; 
+  border-bottom: 1px solid var(--line);
+  transition: 0.3s;
+}
+
+/* Custom Arrow Icon using Pseudo-element */
+.achievements li::before {
+  content: "→"; 
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: bold;
+  top: 12px;
+}
+
+.achievements li h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
+  display: inline;
+}
+
+/* Hover effect on Achievement items */
+.achievements li:hover {
+  background: rgba(77, 163, 255, 0.05);
+  padding-left: 45px; /
+}
+
+.achievements li:last-child {
+  border-bottom: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  body { padding: 20px; }
+  #intro { flex-direction: column-reverse; text-align: center; }
+  .form-group { flex-direction: column; }
+  .cert-card { flex-direction: column; align-items: center; }
+}
